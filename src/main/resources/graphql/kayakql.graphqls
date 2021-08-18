@@ -1,0 +1,36 @@
+type Kayak {
+  id: ID!,
+  type: String,
+  modelCode: String,
+  brandName: String
+}
+
+
+type Plan {
+  planId: Int!,
+  planName: String,
+  dataPrice: Float,
+  callPrice: Float
+}
+
+type User {
+  id: Int!,
+  firstName: String,
+  lastName: String,
+  planId: Int
+}
+
+type Query {
+  kayaks(count: Int):[Kayak]
+  kayak(id: ID):Kayak
+  users(count: Int):[User]
+  user(id: Int):User
+  plans(count: Int):[Plan]
+  plan(planIid: Int):Plan
+}
+
+type Mutation {
+  createKayak(type: String!, modelCode: String!, brandName: String):Kayak
+  createUser(id: Int!, firstName: String, lastName: String, planId: Int):User
+  createPlan(planId: Int!, planName: String, dataPrice: Float, callPrice: Float):Plan
+}
